@@ -1,0 +1,14 @@
+public class Max {
+    public void max(){
+        List <integer> arr = new List<integer>();
+        for(integer i=0; i<=5; i++){
+            arr.add(i);
+        }
+        integer max = arr[0];
+        for(integer i=0; i<arr.size(); i++){
+            if(arr[i] > max)
+                max = arr[i];
+        }
+        System.debug('Biggest element is: '+max);
+    }
+}
