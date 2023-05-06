@@ -1,0 +1,5 @@
+public class Power {
+    public void power(integer base, integer exp){
+        System.debug(base + ' to the power '+ exp + ' is '+ Math.pow(base, exp));
+    }
+}
