@@ -1,0 +1,16 @@
+public class Fibonacci {
+    public void fibonacci(integer num){
+        integer a,b,c;
+        a=0;
+        b=1;
+        c=a+b;
+        List<integer> series = new List<integer>{0,1};
+            for(integer i=3; i<=num; i++){
+                series.add(c);
+                a=b;
+                b=c;
+                c=a+b;
+            }
+        System.debug('Fibonacci series' + series);
+    }
+}
