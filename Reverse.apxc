@@ -1,0 +1,18 @@
+public class Reverse {
+    public void reverseArray(){
+        List<integer> arr = new List<integer>();
+        for(integer i=0; i<=5; i++){
+            arr.add(i);
+        }
+        integer first=0, last=arr.size()-1;
+        
+        while (first < last){
+            integer temp = arr[first];
+            arr[first]=arr[last];
+            arr[last]=temp;
+            first++;
+            last--;
+        }
+        System.debug('Reversed array: '+arr);
+    }
+}
