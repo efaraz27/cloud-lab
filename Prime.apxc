@@ -1,0 +1,15 @@
+public class Prime {
+    public void isPrime(integer num){
+        integer c=0;
+        for(integer i=1; i<=num; i++){
+            if(Math.mod(num, i) == 0) 
+                c++;
+        }
+        if(c == 2){
+            system.debug('Prime number');
+        }
+        else{
+            system.debug('Not a prime number');
+        }
+    }
+}
