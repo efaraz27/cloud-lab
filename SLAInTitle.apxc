@@ -1,0 +1,9 @@
+public class SLAInTitle {
+    public void printBooks(){
+        List<PricebookEntry> pricebookEntry = [SELECT Product2.Name, UnitPrice FROM PricebookEntry WHERE Product2.Name LIKE '%SLA%'];
+        
+        for(PricebookEntry entry: pricebookEntry){
+            System.debug('Book title: ' + entry.Product2.Name + 'Unit price: ' + entry.UnitPrice);
+        }
+    }
+}
