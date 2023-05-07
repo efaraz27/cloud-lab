@@ -1,0 +1,10 @@
+public class Leader {
+    public void printLeadersFrom(){
+        List<Lead> leads = [SELECT Title, Country, Name FROM Lead WHERE Country IN ('Taiwan', 'France', 'Japan')];
+        for (Lead lead : leads) {
+            System.debug('Title: ' + lead.Title);
+            System.debug('Country: ' + lead.Country);
+            System.debug('Name: ' + lead.Name);
+        }
+    }
+}
