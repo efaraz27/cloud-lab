@@ -1,0 +1,10 @@
+public class LeadersFromSameOrg {
+    public void leadersFromSameOrg(){
+        for(Contact contact: [SELECT Phone, OwnerId from Contact]){
+            if(contact.Phone == null) continue;
+            Integer count = [SELECT COUNT() FROM Lead WHERE Phone = :(contact.Phone) AND OwnerId = :(contact.OwnerId)];
+            if(count == 0) continue;
+            System.debug('Number: '+ contact.Phone + ' Count: '+ count);
+        }
+    }
+}
