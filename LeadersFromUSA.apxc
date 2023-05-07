@@ -1,6 +1,6 @@
 public class LeadersFromUSA {
     public void printLeadersFromUSA(){
-        List<Lead> leads = [SELECT Country FROM Lead WHERE Country IN ('USA')];
-        System.debug('Number of leaders in USA: '+ leads.size());
+        Integer count = [SELECT COUNT() FROM Lead WHERE Country ='USA'];
+        System.debug('Number of leaders in USA: '+ count);
     }
 }
