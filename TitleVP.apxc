@@ -1,0 +1,8 @@
+public class TitleVP {
+    public void titleVP(){
+        List<Lead> leaders = [SELECT Title, FirstName, LastName FROM Lead WHERE Title LIKE '%VP%'];
+        for(Lead leader: leaders){
+            System.debug(leader.FirstName + ' ' + leader.LastName + ' : ' + leader.Title);
+        }
+    }
+}
