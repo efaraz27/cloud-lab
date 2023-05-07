@@ -1,0 +1,28 @@
+public class MaxUnitPrice {
+    public void maxUnitPrice(){
+        Map<String, Decimal> maxPricesByProductCode = new Map<String, Decimal>();
+
+        for (AggregateResult result : [SELECT ProductCode, MAX(UnitPrice) maxPrice FROM PricebookEntry WHERE ProductCode LIKE 'gc%' GROUP BY ProductCode]) {
+            String productCode = (String)result.get('ProductCode');
+            Decimal maxPrice = (Decimal)result.get('maxPrice');
+            maxPricesByProductCode.put(productCode, maxPrice);
+        }
+        
+        List<String> sortedProductCodes = new List<String>(maxPricesByProductCode.keySet());
+        for (Integer i = 0; i < sortedProductCodes.size() - 1; i++) {
+            for (Integer j = i + 1; j < sortedProductCodes.size(); j++) {
+                if (maxPricesByProductCode.get(sortedProductCodes.get(j)) > maxPricesByProductCode.get(sortedProductCodes.get(i))) {
+                    String temp = sortedProductCodes.get(i);
+                    sortedProductCodes.set(i, sortedProductCodes.get(j));
+                    sortedProductCodes.set(j, temp);
+                }
+            }
+        }
+        
+        for (String productCode : sortedProductCodes) {
+            Decimal maxPrice = maxPricesByProductCode.get(productCode);
+            System.debug('Product Code: ' + productCode);
+            System.debug('Maximum Unit Price: ' + maxPrice);
+        }
+    }
+}
