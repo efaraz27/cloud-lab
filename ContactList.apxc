@@ -1,0 +1,12 @@
+public class ContactList {
+    public void contactList(){
+        List<Contact> contacts = [SELECT Title, Phone, Name FROM Contact WHERE Phone LIKE '%212%'];
+
+        for (Contact contact : contacts) {
+            System.debug('Title: ' + contact.Title);
+            System.debug('Phone: ' + contact.Phone);
+            System.debug('Name: ' + contact.Name);
+            System.debug(contact.Phone.c);
+        }
+    }
+}
