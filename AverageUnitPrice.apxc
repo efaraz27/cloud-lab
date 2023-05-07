@@ -1,0 +1,21 @@
+public class AverageUnitPrice {
+    public void averageUnitPrice(){
+       Map<String, List<PricebookEntry>> entriesByProductCode = new Map<String, List<PricebookEntry>>();
+
+        for (PricebookEntry entry : [SELECT ProductCode, UnitPrice FROM PricebookEntry]) {
+            if (!entriesByProductCode.containsKey(entry.ProductCode)) {
+                entriesByProductCode.put(entry.ProductCode, new List<PricebookEntry>());
+            }
+            entriesByProductCode.get(entry.ProductCode).add(entry);
+        }
+        
+        List<AggregateResult> results = [SELECT ProductCode, AVG(UnitPrice) avgPrice FROM PricebookEntry GROUP BY ProductCode ORDER BY AVG(UnitPrice) DESC];
+        
+        for (AggregateResult result : results) {
+            String productCode = (String)result.get('ProductCode');
+            Decimal avgPrice = (Decimal)result.get('avgPrice');
+            System.debug('Product Code: ' + productCode + ' Average Unit Price: ' + avgPrice);
+        }
+
+    }
+}
